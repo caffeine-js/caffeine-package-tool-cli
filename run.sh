@@ -21,17 +21,17 @@ fi
 # Get the absolute directory where this script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# 3. Runtime Management (Mise/Bun)
+# 3. Runtime Management (Mise)
+# Ensure mise is in the PATH for the current script execution
+export PATH="$HOME/.local/share/mise/bin:$PATH"
+
 if ! command -v mise &> /dev/null; then
     echo "Mise not found. Installing..."
     curl https://mise.run | sh
-    # Adding mise to temporary path for the current execution if needed
-    export PATH="$HOME/.local/share/mise/bin:$PATH"
-    eval "$(mise activate bash)"
 fi
 
-echo "Using mise to configure Bun..."
-mise use bun@latest
+# Always activate mise for this shell session to enable tools
+eval "$(mise activate bash)"
 
 # 4. Linter Management (Biome/Brew)
 if ! command -v biome &> /dev/null; then
@@ -63,12 +63,17 @@ cd "$NEW_DIR"
 git init
 git submodule add git@github.com:caffeine-js/agent-guide.git .agent
 
+# Installing latest version of Bun locally in the project
+echo "Using mise to configure Bun..."
+mise use bun@latest
+
 # 6. Configuration and Installation
 echo "Running Biome migration..."
 biome migrate --write || echo "Warning: 'biome migrate' failed or no files found to migrate."
 
 echo "Installing dependencies with Bun..."
-bun i
+# Using mise exec to ensure the local bun version is used
+mise exec -- bun i
 
 # 7. Finalization
 echo "----------------------------------------------------"
