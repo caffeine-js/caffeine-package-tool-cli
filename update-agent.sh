@@ -1,20 +1,18 @@
 #!/bin/bash
 
-# Abort on any error
 set -e
+source "$(dirname "$0")/theme.sh"
 
-# Path to .agent directory
 AGENT_DIR=".agent"
+AGENT_DIR_VIEW="${UNDERLINE}${BOLD}${CYAN}$AGENT_DIR${NC}"
 
 if [ ! -d "$AGENT_DIR" ]; then
-    echo "Error: Directory '$AGENT_DIR' not found."
-    echo "Make sure you are in the root of a Caffeine project."
+    echo -e "${RED}${LOGO} Directory '${AGENT_DIR_VIEW}' not found."
+    echo -e "${TIP} Make sure you are in the root of a Caffeine project."
     exit 1
 fi
 
-echo "Updating .agent submodule to the latest commit..."
+echo -e "${CYAN}${LOGO} Updating ${AGENT_DIR_VIEW} submodule to the latest commit..."
 git submodule update --remote --merge "$AGENT_DIR"
 
-echo "----------------------------------------------------"
-echo ".agent successfully updated!"
-echo "----------------------------------------------------"
+echo -e "${GREEN}${LOGO} Agent updated successfully!"

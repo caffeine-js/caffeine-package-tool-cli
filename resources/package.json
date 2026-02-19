@@ -43,11 +43,11 @@
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
+    "husky": "^9.1.7",
     "@faker-js/faker": "^10.2.0",
     "@types/bun": "latest",
     "@vitest/coverage-v8": "^4.0.18",
     "@vitest/ui": "^4.0.18",
-    "husky": "^9.1.7",
     "tsup": "^8.5.1",
     "vite-tsconfig-paths": "^6.0.5",
     "vitest": "^4.0.18"
