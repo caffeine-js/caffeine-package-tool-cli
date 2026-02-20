@@ -9,11 +9,13 @@ CAFFEINE_SCRIPT="$SCRIPT_DIR/caffeine.sh"
 INIT_SCRIPT="$SCRIPT_DIR/init.sh"
 UPDATE_DEPS_SCRIPT="$SCRIPT_DIR/install-dependencies.sh"
 SETUP_ENV_SCRIPT="$SCRIPT_DIR/install-environment.sh"
+UPDATE_SCRIPT="$SCRIPT_DIR/update.sh"
 
 chmod +x "$CAFFEINE_SCRIPT"
 chmod +x "$INIT_SCRIPT"
 chmod +x "$UPDATE_DEPS_SCRIPT"
 chmod +x "$SETUP_ENV_SCRIPT"
+chmod +x "$UPDATE_SCRIPT"
 
 ZSHRC="$HOME/.zshrc"
 

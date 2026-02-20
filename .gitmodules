@@ -1,3 +1,9 @@
 [submodule ".agent"]
 	path = .agent
 	url = git@github.com:caffeine-js/agent-guide.git
+[submodule "scripts/update-agent"]
+	path = scripts/update-agent
+	url = git@github.com:caffeine-js/cli.caffeine.update-agent.git
+[submodule "scripts/install-husky"]
+	path = scripts/install-husky
+	url = git@github.com:caffeine-js/cli.caffeine.install-husky.git
