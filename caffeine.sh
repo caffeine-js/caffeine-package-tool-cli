@@ -15,7 +15,9 @@ case "$1" in
         ;;
     add)
         if [ "$2" == "husky" ]; then
-            "$SCRIPT_DIR/scripts/install-husky/install.sh" "${@:3}"
+            "$SCRIPT_DIR/scripts/add-husky/install.sh" "${@:3}"
+        elif [ "$2" == "agent" ]; then
+            "$SCRIPT_DIR/scripts/add-agent/add-agent.sh" "${@:3}"
         else
             echo -e "${RED}Unknown add target: $2${NC}"
             echo -e "Run '${CYAN}caffeine help${NC}' for usage information."
